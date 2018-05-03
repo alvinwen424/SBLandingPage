@@ -1,0 +1,19 @@
+{
+  "name": "sblandingpage",
+  "version": "1.0.0",
+  "description": "landing page for Story Box",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvinwen424/SBLandingPage.git"
+  },
+  "author": "Alvin Wen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alvinwen424/SBLandingPage/issues"
+  },
+  "homepage": "https://github.com/alvinwen424/SBLandingPage#readme"
+}
