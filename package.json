@@ -4,7 +4,8 @@
   "description": "landing page for Story Box",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/alvinwen424/SBLandingPage/issues"
   },
-  "homepage": "https://github.com/alvinwen424/SBLandingPage#readme"
+  "homepage": "https://github.com/alvinwen424/SBLandingPage#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "webpack": "^4.7.0"
+  }
 }
