@@ -5,9 +5,17 @@ const aws = require('aws-sdk')
 const multer = require('multer')
 const multerS3 = require('multer-s3')
 const bodyParser = require('body-parser')
+const { secretAccessKey, accessKeyId} = require('./secrets')
 
 const app = express()
 const s3 = new aws.S3()
+
+// this needs work, need to find secret access key create at secrets.js to hide keys
+aws.config.update({
+  secretAccessKey,
+  accessKeyId,
+  region: 'us-east-1'
+})
 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
