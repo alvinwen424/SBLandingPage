@@ -1,8 +1,13 @@
 const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
+const aws = require('aws-sdk')
+const multer = require('multer')
+const multerS3 = require('multer-s3')
 const bodyParser = require('body-parser')
+
 const app = express()
+const s3 = new aws.S3()
 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
@@ -10,8 +15,23 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static(path.join(__dirname, './public')))
 
+const upload = multer({
+  storage: multerS3({
+    s3,
+    bucket: 'bucket-name',
+    key: (req, file, cb) => {
+      console.log(file)
+      cb(null, file.originalname)
+    }
+  })
+})
+
 app.get('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, './public/index.html'))
+})
+
+app.post('/upload', upload.array('upl', 1), (req, res, next) => {
+  res.send('uploaded')
 })
 
 app.use((err, req, res, next) => {
