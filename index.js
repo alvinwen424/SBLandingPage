@@ -10,7 +10,7 @@ const { secretAccessKey, accessKeyId} = require('./secrets')
 const app = express()
 const s3 = new aws.S3()
 
-// this needs work, need to find secret access key create at secrets.js to hide keys
+//secretkey and accesskey is hidden for safety purposes
 aws.config.update({
   secretAccessKey,
   accessKeyId,
@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static(path.join(__dirname, './public')))
 
+//uses multer for uploading to aws s3
 const upload = multer({
   storage: multerS3({
     s3,
