@@ -11,17 +11,26 @@ export default class Home extends Component {
       month:1,
       day:1,
       year:1,
-      gender:1
+      gender:1,
+      firstName:"First Name",
+      lastName:"Last Name",
+      email:"Email",
+      confirmEmail:"Confirm email"
+
     }
   }
 
   onChange = (type, e, index, value) => {
     e.preventDefault()
-    this.setState({[type]: value})
+    if(type == 'firstName' || type == 'lastName' || type == 'email' || type == 'confirmEmail'){
+      this.setState({[type]: e.target.value})
+    }else{
+      this.setState({[type]: value})
+    }
   }
 
   render(){
-    const {month, day, year, gender} = this.state
+    const {firstName, lastName, email, confirmEmail, month, day, year, gender} = this.state
     const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const days = []
     const years = []
@@ -31,6 +40,7 @@ export default class Home extends Component {
     for(var i= 1960; i <=(new Date()).getFullYear(); i++){
       years.push(i)
     }
+    console.log(lastName, firstName, email, confirmEmail)
     return (
       <div className="signup-form">
         <div className="logo" >
@@ -39,19 +49,23 @@ export default class Home extends Component {
         <div className="form">
           <TextField
             className='form-textbox'
-            hintText="First Name"
+            value={firstName}
+            onChange={((e)=> this.onChange('firstName', e))}
           />
           <TextField
             className='form-textbox'
-            hintText="Last Name"
+            value={lastName}
+            onChange={((e)=> this.onChange('lastName', e))}
           /><br />
           <TextField
             className='form-textbox'
-            hintText="Email"
+            value={email}
+            onChange={((e)=> this.onChange('email', e))}
           />
           <TextField
             className='form-textbox'
-            hintText="Confirm Email"
+            value={confirmEmail}
+            onChange={((e)=> this.onChange('confirmEmail', e))}
           /><br />
           <DropDownMenu value={gender} onChange={((e, index, value)=> this.onChange('gender', e, index, value))}>
             <MenuItem value='1' primaryText="Male" />
@@ -76,6 +90,7 @@ export default class Home extends Component {
         <RaisedButton
           label='submit'
           backgroundColor='#84CAEE'
+          onClick={this.onSubmit}
         />
       </div>
     )
