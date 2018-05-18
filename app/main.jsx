@@ -4,15 +4,15 @@ import { render } from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import Home from './components/Home'
 import Navbar from './components/Navbar'
+import Routes from './components/Routes'
 render(
   <Provider>
     <Router>
       <div>
         <MuiThemeProvider>
           <Navbar />
-          <Home />
+          <Routes />
         </MuiThemeProvider>
       </div>
     </Router>

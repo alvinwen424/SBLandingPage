@@ -4,12 +4,20 @@
   align-items: center;
 }
 
+.form{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
 .form-textbox{
+  flex:1;
   border-radius: 10px;
   border: 2px solid #84CAEE;
 }
 
-.logo {
-  display: flex;
-  align-content: center;
+.signup-form img{
+  align-self: center;
+  width: 50%;
+  height: 50%;
 }

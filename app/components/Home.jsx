@@ -49,6 +49,7 @@ export default class Home extends Component {
   render(){
     const {firstName, lastName, email, confirmEmail, month, day, year, gender} = this.state
     const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    const genders = ['Male','Female']
     const days = []
     const years = []
     for(var i = 1; i <= 31; i++){
@@ -57,12 +58,11 @@ export default class Home extends Component {
     for(var i= 1960; i <=(new Date()).getFullYear(); i++){
       years.push(i)
     }
-    console.log(lastName, firstName, email, confirmEmail)
     return (
       <div className="signup-form">
-        <div className="logo" >
-          <img src="Storybox_1.jpg" width="100px" height="100px"/>
-        </div>
+        <img className='logo' src="Storybox_3.jpg" />
+        <h1>So... What's your story?</h1>
+        <p>Create, organize and store your story for the future.</p>
         <div className="form">
           <TextField
             className='form-textbox'
@@ -85,9 +85,10 @@ export default class Home extends Component {
             onChange={((e)=> this.onChange('confirmEmail', e))}
           /><br />
           <DropDownMenu value={gender} onChange={((e, index, value)=> this.onChange('gender', e, index, value))}>
-            <MenuItem value='1' primaryText="Male" />
-            <MenuItem value='2' primaryText="Female" />
-          </DropDownMenu><br />
+            {genders.map((eachGender, index) => {
+              return <MenuItem key={eachGender + index} value={index + 1} primaryText={eachGender} />
+            })}
+          </DropDownMenu>
           <DropDownMenu  value={month} onChange={((e, index, value)=> this.onChange('month', e, index, value))}>
             {months.map((eachMonth, index) => {
               return <MenuItem key={eachMonth + index} value={index + 1} primaryText={eachMonth} />
