@@ -20,6 +20,7 @@
   "homepage": "https://github.com/alvinwen424/SBLandingPage#readme",
   "dependencies": {
     "aws-sdk": "^2.236.1",
+    "axios": "^0.18.0",
     "babel-preset-stage-2": "^6.24.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",

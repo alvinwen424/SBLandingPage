@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import TextField from 'material-ui/TextField'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
@@ -18,6 +19,22 @@ export default class Home extends Component {
       confirmEmail:"Confirm email"
 
     }
+  }
+
+  onSubmit = () => {
+    const {firstName, lastName, email, confirmEmail} = this.state
+    axios.post('/upload', {
+      firstName,
+      lastName,
+      email,
+      confirmEmail
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   onChange = (type, e, index, value) => {

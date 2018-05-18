@@ -33,14 +33,21 @@ const upload = multer({
       cb(null, file.originalname)
     }
   })
-})
+}).array('upload', 1)
 
 app.get('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
-app.post('/upload', upload.array('upl', 1), (req, res, next) => {
-  res.send('uploaded')
+app.post('/upload', (req, res, next) => {
+  upload(req, res, function (error) {
+    if (error) {
+      console.log(error);
+     res.send('error', error)
+    }
+    console.log('File uploaded successfully.');
+    res.send('uploaded sucessfully')
+  });
 })
 
 app.use((err, req, res, next) => {
