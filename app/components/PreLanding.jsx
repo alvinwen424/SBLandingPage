@@ -32,19 +32,24 @@ export default class PreLanding extends Component {
         <img src='Storybox_3.jpg' width="50%" height="50%"/>
         <p>Enter your email to join the waitlist</p>
         <div>
-        <TextField
-            className='form-textbox'
-            value={email}
-            onChange={(this.onChange)}
-        />
-        <RaisedButton
-          className='submitButton'
-          label='submit'
-          onClick={this.onSubmit}
-          backgroundColor='#84CAEE'
-          style={style}
-        />
+          <TextField
+              className='form-textbox'
+              value={email}
+              onChange={(this.onChange)}
+          />
+          <RaisedButton
+            className='submitButton'
+            label='submit'
+            onClick={this.onSubmit}
+            backgroundColor='#84CAEE'
+          />
         </div>
+        <p>or</p>
+        <RaisedButton
+          backgroundColor='#84CAEE'
+          label="Facebook"
+          icon={<i class="fab fa-facebook-square"></i>}
+        />
       </div>
     )
   }

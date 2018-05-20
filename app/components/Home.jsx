@@ -4,6 +4,8 @@ import TextField from 'material-ui/TextField'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/Flatbutton'
 
 export default class Home extends Component {
   constructor(props){
@@ -16,8 +18,8 @@ export default class Home extends Component {
       firstName:"First Name",
       lastName:"Last Name",
       email:"Email",
-      confirmEmail:"Confirm email"
-
+      confirmEmail:"Confirm email",
+      submitted: false
     }
   }
 
@@ -36,6 +38,7 @@ export default class Home extends Component {
     })
     .then(res => {
       console.log(res)
+      this.setState({submitted: true})
     })
     .catch(err => {
       console.log(err)
@@ -51,8 +54,12 @@ export default class Home extends Component {
     }
   }
 
+  handleClose = () => {
+    this.setState({submitted: false})
+  }
+
   render(){
-    const {firstName, lastName, email, confirmEmail, month, day, year, gender} = this.state
+    const {firstName, lastName, email, confirmEmail, month, day, year, gender, submitted} = this.state
     const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const genders = ['Male','Female']
     const days = []
@@ -63,6 +70,13 @@ export default class Home extends Component {
     for(var i= 1960; i <=(new Date()).getFullYear(); i++){
       years.push(i)
     }
+    const actions = [
+      <FlatButton
+        label="Done"
+        primary={true}
+        onClick={this.handleClose}
+      />,
+    ];
     return (
       <div className="signup-form">
         <img className='logo' src="Storybox_3.jpg" />
@@ -116,6 +130,14 @@ export default class Home extends Component {
           onClick={this.onSubmit}
           backgroundColor='#84CAEE'
         />
+        <Dialog
+          title='Thank you for signing up!'
+          open={submitted}
+          actions={actions}
+          onRequestClose={this.handleClose}
+        >
+          Thank you {firstName} for registering for our community pool, you will be one of the first people to recieve an invitation to our beta! See you soon!
+        </Dialog>
       </div>
     )
   }
