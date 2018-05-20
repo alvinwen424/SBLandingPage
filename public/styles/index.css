@@ -1,3 +1,22 @@
+@font-face {
+  font-family: 'ubuntu_condensedregular';
+  src: url('/ubuntuStyle/ubuntu-c-webfont.woff2') format('woff2'),
+       url('/ubuntuStyle/ubuntu-c-webfont.woff') format('woff'),
+       url('/ubuntuStyle/ubuntu-c-webfont.1.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'ubuntu_condensedregular' !important;
+}
+
+.prelandingPage {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .signup-form{
   display:flex;
   flex-direction: column;
@@ -11,6 +30,7 @@
 }
 
 .form-textbox{
+  font-family: 'ubuntu_condensedregular' !important;
   flex:1;
   border-radius: 10px;
   border: 2px solid #b1bfc4;
@@ -21,3 +41,13 @@
   width: 50%;
   height: 50%;
 }
+
+.dropDown {
+  font-family: 'ubuntu_condensedregular' !important;
+}
+
+.submitButton {
+  font-family: 'ubuntu_condensedregular' !important;
+  background-color: '#84CAEE';
+}
+

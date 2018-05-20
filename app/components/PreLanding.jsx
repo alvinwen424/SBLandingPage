@@ -28,18 +28,23 @@ export default class PreLanding extends Component {
       return <Redirect to={{pathname:"./Home", state:{email} } }/>
     }
     return(
-      <div>
+      <div className='prelandingPage'>
         <img src='Storybox_3.jpg' width="50%" height="50%"/>
+        <p>Enter your email to join the waitlist</p>
+        <div>
         <TextField
             className='form-textbox'
             value={email}
             onChange={(this.onChange)}
         />
         <RaisedButton
+          className='submitButton'
           label='submit'
-          backgroundColor='#84CAEE'
           onClick={this.onSubmit}
+          backgroundColor='#84CAEE'
+          style={style}
         />
+        </div>
       </div>
     )
   }
