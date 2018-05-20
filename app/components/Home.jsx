@@ -21,6 +21,11 @@ export default class Home extends Component {
     }
   }
 
+  componentDidMount() {
+    this.setState({email: this.props.location.state.email})
+  }
+
+
   onSubmit = () => {
     const {firstName, lastName, email, confirmEmail} = this.state
     axios.post('/upload', {
@@ -47,6 +52,7 @@ export default class Home extends Component {
   }
 
   render(){
+    console.log('props', this.props)
     const {firstName, lastName, email, confirmEmail, month, day, year, gender} = this.state
     const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const genders = ['Male','Female']

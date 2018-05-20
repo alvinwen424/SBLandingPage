@@ -1,24 +1,32 @@
 import React, { Component} from 'react'
+import { Redirect} from 'react-router-dom'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+
+import Home from './Home'
 
 export default class PreLanding extends Component {
   constructor(props){
     super(props)
     this.state = {
-      email:""
+      email:"",
+      redirectToLanding: false
     }
   }
 
-  onChange = (e, index, value) => {
-    this.setState({email: value})
+  onChange = (e) => {
+    this.setState({email: e.target.value})
   }
 
-  onSubmit = {
+  onSubmit = () => {
+    this.setState({redirectToLanding: true})
   }
 
   render(){
-    let { email } = this.state
+    let { email, redirectToLanding } = this.state
+    if(redirectToLanding){
+      return <Redirect to={{pathname:"./Home", state:{email} } }/>
+    }
     return(
       <div>
         <img src='Storybox_3.jpg' width="50%" height="50%"/>
