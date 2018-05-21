@@ -48,7 +48,7 @@ export default class PreLanding extends Component {
         <RaisedButton
           backgroundColor='#84CAEE'
           label="Facebook"
-          icon={<i class="fab fa-facebook-square"></i>}
+          icon={<i className="fab fa-facebook-square"></i>}
         />
       </div>
     )

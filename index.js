@@ -8,14 +8,16 @@ const bodyParser = require('body-parser')
 const { secretAccessKey, accessKeyId} = require('./secrets')
 
 const app = express()
-const s3 = new aws.S3()
-
-//secretkey and accesskey is hidden for safety purposes
+//aws.config.update must be above s3 instantiation for credentials to load when uploading
 aws.config.update({
   secretAccessKey,
   accessKeyId,
   region: 'us-east-1'
 })
+
+const s3 = new aws.S3()
+
+//secretkey and accesskey is hidden for safety purposes
 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
@@ -24,31 +26,50 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, './public')))
 
 //uses multer for uploading to aws s3
+// const upload = multer({
+//   storage: multerS3({
+//     s3,
+//     bucket: 'sd-landing-page',
+//     key: (req, file, cb) => {
+//       console.log(file)
+//       cb(null, file.originalname)
+//     }
+//   })
+// })
+
 const upload = multer({
-  storage: multerS3({
-    s3,
-    bucket: 'bucket-name',
-    key: (req, file, cb) => {
-      console.log(file)
-      cb(null, file.originalname)
-    }
+  storage: multer.memoryStorage(),
+  // file size limitation in bytes
+  limits: { fileSize: 52428800 },
+})
+
+app.post('/upload', upload.single('userdata'), (req, res) => {
+  // req.file is the 'userdata' file
+  s3.putObject({
+      Bucket: 'sb-landing-page',
+      Key: 'user',
+      Body: req.file,
+      ACL: 'public-read', // your permisions
+    }, (err) => {
+      if (err) return res.status(400).send(err);
+      res.send('File uploaded to S3')
   })
-}).array('upload', 1)
+})
 
 app.get('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
-app.post('/upload', (req, res, next) => {
-  upload(req, res, function (error) {
-    if (error) {
-      console.log(error);
-     res.send('error', error)
-    }
-    console.log('File uploaded successfully.');
-    res.send('uploaded sucessfully')
-  });
-})
+// app.post('/upload', upload.array('photos', 1), (req, res, next) => {
+//   upload(req, res, function (error) {
+//     if (error) {
+//       console.log(error);
+//      res.send('error', error)
+//     }
+//     console.log('File uploaded successfully.');
+//     res.send('uploaded sucessfully')
+//   });
+// })
 
 app.use((err, req, res, next) => {
     console.error(err)

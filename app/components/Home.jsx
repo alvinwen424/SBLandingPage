@@ -6,6 +6,16 @@ import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/Flatbutton'
+import sa from 'superagent'
+
+const upload = (file) => {
+  sa.post('/upload')
+  .attach('userdata', file)
+  .end((err, res) => {
+    if (err) console.log(err);
+    alert('File uploaded!');
+  })
+}
 
 export default class Home extends Component {
   constructor(props){
@@ -30,7 +40,7 @@ export default class Home extends Component {
 
   onSubmit = () => {
     const {firstName, lastName, email, confirmEmail} = this.state
-    axios.post('/upload', {
+    upload({
       firstName,
       lastName,
       email,
