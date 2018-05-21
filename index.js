@@ -43,10 +43,11 @@ const upload = multer({
   limits: { fileSize: 52428800 },
 })
 
-app.post('/upload', upload.single('userdata'), (req, res) => {
+app.post('/upload', (req, res) => {
   // req.file is the 'userdata' file
+  console.log('backend', req.body)
   s3.putObject({
-      Bucket: 'sb-landing-page',
+      Bucket: 'sd-landing-page',
       Key: 'user',
       Body: req.file,
       ACL: 'public-read', // your permisions

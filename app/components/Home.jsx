@@ -9,11 +9,12 @@ import FlatButton from 'material-ui/Flatbutton'
 import sa from 'superagent'
 
 const upload = (file) => {
+  console.log(file)
   sa.post('/upload')
-  .attach('userdata', file)
+  .send(file)
   .end((err, res) => {
     if (err) console.log(err);
-    alert('File uploaded!');
+    console.log('response', res)
   })
 }
 
@@ -38,7 +39,24 @@ export default class Home extends Component {
   }
 
 
-  onSubmit = () => {
+  // onSubmit = () => {
+  //   const {firstName, lastName, email, confirmEmail} = this.state
+  //   upload({
+  //     firstName,
+  //     lastName,
+  //     email,
+  //     confirmEmail
+  //   })
+  //   .then(res => {
+  //     console.log(res)
+  //     this.setState({submitted: true})
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  // }
+
+    onSubmit = () => {
     const {firstName, lastName, email, confirmEmail} = this.state
     upload({
       firstName,
@@ -46,13 +64,7 @@ export default class Home extends Component {
       email,
       confirmEmail
     })
-    .then(res => {
-      console.log(res)
-      this.setState({submitted: true})
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    this.setState({submitted: true})
   }
 
   onChange = (type, e, index, value) => {
