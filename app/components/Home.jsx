@@ -79,7 +79,7 @@ export default class Home extends Component {
     ];
     return (
       <div className="signup-form">
-        <img className='logo' src="Storybox_3.jpg" />
+        <img className='logo' src="SBTransparent.png" />
         <h1>So... What's your story?</h1>
         <p>Create, organize and store your story for the future.</p>
         <div className="form">

@@ -42,6 +42,10 @@ body {
   height: 50%;
 }
 
+.navBar {
+  font-family: 'ubuntu_condensedregular' !important;
+}
+
 .dropDown {
   font-family: 'ubuntu_condensedregular' !important;
 }

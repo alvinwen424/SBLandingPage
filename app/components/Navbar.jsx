@@ -5,11 +5,12 @@ import Avatar from 'material-ui/Avatar'
 export default class NavBar extends Component {
   render(){
     return(
-      <div>
+      <div >
         <AppBar
+          className='navBar'
           style={{backgroundColor: '#066FA6' }}
           title="StoryBox"
-          iconElementLeft ={<Avatar src="Icon_1.jpg"></Avatar>}
+          iconElementLeft ={<Avatar src="SBTransparent.png"></Avatar>}
         />
       </div>
     )
