@@ -29,7 +29,8 @@ export default class PreLanding extends Component {
     }
     return(
       <div className='prelandingPage'>
-        <img src='Storybox_3.jpg' width="50%" height="50%"/>
+        <img src='SBTransparent.png' width="50%" height="50%"/>
+        <h1 className="prelandingPage-Story">StoryBox</h1>
         <p>Enter your email to join the waitlist</p>
         <div>
           <TextField

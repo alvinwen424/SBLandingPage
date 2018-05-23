@@ -15,6 +15,12 @@ body {
   display:flex;
   flex-direction: column;
   align-items: center;
+  background-image: url('/SB_Stock_Landing_Page.jpg');
+  background-size: cover;
+}
+
+.prelandingPage .prelandingPage-Story, .prelandingPage p  {
+  color: white;
 }
 
 .signup-form{
