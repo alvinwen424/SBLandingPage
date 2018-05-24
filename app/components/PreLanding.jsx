@@ -2,10 +2,18 @@ import React, { Component} from 'react'
 import { Redirect} from 'react-router-dom'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+import PropTypes from "prop-types"
+import { withStyles } from 'material-ui/styles'
 
 import Home from './Home'
 
-export default class PreLanding extends Component {
+const styles = () => ({
+  input: {
+    color: "white"
+  }
+})
+
+class PreLanding extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -23,6 +31,7 @@ export default class PreLanding extends Component {
   }
 
   render(){
+    console.log('props', this.props.classes)
     let { email, redirectToLanding } = this.state
     if(redirectToLanding){
       return <Redirect to={{pathname:"./Home", state:{email} } }/>
@@ -37,6 +46,7 @@ export default class PreLanding extends Component {
               className='form-textbox'
               value={email}
               onChange={(this.onChange)}
+
           />
           <RaisedButton
             className='submitButton'
@@ -55,3 +65,9 @@ export default class PreLanding extends Component {
     )
   }
 }
+
+PreLanding.PropTypes = {
+  classes: PropTypes.object.isRequired
+}
+
+export default (PreLanding)
