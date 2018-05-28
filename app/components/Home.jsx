@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import propTypes from 'prop-types'
 import TextField from 'material-ui/TextField'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/Flatbutton'
+import { withStyles } from '@material-ui/core/styles'
 import sa from 'superagent'
+
+const styles = theme => {
+
+}
 
 const upload = (file) => {
   console.log(file)
@@ -18,7 +24,7 @@ const upload = (file) => {
   })
 }
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -164,3 +170,10 @@ export default class Home extends Component {
     )
   }
 }
+
+Home.propTypes = {
+  class: propTypes.object.isRequired
+}
+
+
+export default withStyles(style)(Home)
