@@ -3,15 +3,7 @@ import { Redirect} from 'react-router-dom'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import PropTypes from "prop-types"
-import { withStyles } from 'material-ui/styles'
-
 import Home from './Home'
-
-const styles = () => ({
-  input: {
-    color: "white"
-  }
-})
 
 class PreLanding extends Component {
   constructor(props){
@@ -41,7 +33,7 @@ class PreLanding extends Component {
         <img src='SBTransparent.png' width="50%" height="50%"/>
         <h1 className="prelandingPage-Story">StoryBox</h1>
         <p>Enter your email to join the waitlist</p>
-        <div>
+        <div id='emailSubmit'>
           <TextField
               className='form-textbox'
               value={email}
@@ -50,7 +42,7 @@ class PreLanding extends Component {
           />
           <RaisedButton
             className='submitButton'
-            label='submit'
+            label='Get Early Access'
             onClick={this.onSubmit}
             backgroundColor='#84CAEE'
           />
@@ -64,10 +56,6 @@ class PreLanding extends Component {
       </div>
     )
   }
-}
-
-PreLanding.PropTypes = {
-  classes: PropTypes.object.isRequired
 }
 
 export default (PreLanding)
