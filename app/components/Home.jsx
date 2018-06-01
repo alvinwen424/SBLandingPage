@@ -44,24 +44,6 @@ class Home extends Component {
     this.setState({email: this.props.location.state.email})
   }
 
-
-  // onSubmit = () => {
-  //   const {firstName, lastName, email, confirmEmail} = this.state
-  //   upload({
-  //     firstName,
-  //     lastName,
-  //     email,
-  //     confirmEmail
-  //   })
-  //   .then(res => {
-  //     console.log(res)
-  //     this.setState({submitted: true})
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
-  // }
-
     onSubmit = () => {
     const {firstName, lastName, email, confirmEmail} = this.state
     upload({
@@ -176,4 +158,4 @@ Home.propTypes = {
 }
 
 
-export default withStyles(style)(Home)
+export default withStyles(styles)(Home)
