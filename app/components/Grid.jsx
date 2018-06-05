@@ -51,44 +51,12 @@ class PreLanding extends Component {
     return(
       <div className={root}>
         <Grid container spacing={24} >
-          <Grid item xs={12}>
-            <img className={paper} src='SBTransparent.png' width="50%" height="50%"/>
-          </Grid>
-          <Grid item xs={12}>
-            <h1 className={paper}>StoryBox</h1>
-          </Grid>
-          <Grid item xs={12}>
-            <p className={paper}>Enter your email to join the waitlist</p>
-          </Grid>
-          <Grid item xs={6}>
-              <TextField
-                  className={paper}
-                  value={email}
-                  onChange={(this.onChange)}
-
-              />
-          </Grid>
-          <Grid item xd={6}>
-              <RaisedButton
-                className={paper}
-                label='Get Early Access'
-                onClick={this.onSubmit}
-                backgroundColor='#84CAEE'
-              />
-          </Grid>
-          <Grid item xs={12}>
-            <p className={paper}>or</p>
-          </Grid>
-          <Grid item xs={12}>
-            <RaisedButton
-              className={paper}
-              backgroundColor='#84CAEE'
-              label="Facebook"
-              icon={<i className="fab fa-facebook-square"></i>}
-            />
-          </Grid>
           <Grid item xs={12} className={gridPaper}>
             <Paper className={paperPaper}>
+              <img className={paper} src='SBTransparent.png' width="50%" height="50%"/>
+              <h1 className={paper}>StoryBox</h1>
+              <p className={paper}>Enter your email to join the waitlist</p>
+              <p>or</p>
               <TextField
                     className={paper}
                     value={email}
@@ -97,9 +65,9 @@ class PreLanding extends Component {
                 />
               <RaisedButton
                 className={paper}
+                label='Get Early Access'
+                onClick={this.onSubmit}
                 backgroundColor='#84CAEE'
-                label="Facebook"
-                icon={<i className="fab fa-facebook-square"></i>}
               />
             </Paper>
           </Grid>
