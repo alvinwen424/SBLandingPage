@@ -13,8 +13,12 @@ const styles = theme => ({
     flexGrow: 1,
   },
   paperPaper: {
+    flex:'1',
     textAlign: 'center',
     width: '500px',
+  },
+  gridPaper: {
+    display: 'flex'
   },
   paper: {
     textAlign: 'center',
@@ -39,26 +43,26 @@ class PreLanding extends Component {
   }
 
   render(){
-    let { classes } = this.props
+    let { paper, paperPaper, root, gridPaper} = this.props.classes
     let { email, redirectToLanding } = this.state
     if(redirectToLanding){
       return <Redirect to={{pathname:"./Home", state:{email} } }/>
     }
     return(
-      <div className={classes.root}>
+      <div className={root}>
         <Grid container spacing={24} >
           <Grid item xs={12}>
-            <img className={classes.paper} src='SBTransparent.png' width="50%" height="50%"/>
+            <img className={paper} src='SBTransparent.png' width="50%" height="50%"/>
           </Grid>
           <Grid item xs={12}>
-            <h1 className={classes.paper}>StoryBox</h1>
+            <h1 className={paper}>StoryBox</h1>
           </Grid>
           <Grid item xs={12}>
-            <p className={classes.paper}>Enter your email to join the waitlist</p>
+            <p className={paper}>Enter your email to join the waitlist</p>
           </Grid>
           <Grid item xs={6}>
               <TextField
-                  className={classes.paper}
+                  className={paper}
                   value={email}
                   onChange={(this.onChange)}
 
@@ -66,33 +70,33 @@ class PreLanding extends Component {
           </Grid>
           <Grid item xd={6}>
               <RaisedButton
-                className={classes.paper}
+                className={paper}
                 label='Get Early Access'
                 onClick={this.onSubmit}
                 backgroundColor='#84CAEE'
               />
           </Grid>
           <Grid item xs={12}>
-            <p className={classes.paper}>or</p>
+            <p className={paper}>or</p>
           </Grid>
           <Grid item xs={12}>
             <RaisedButton
-              className={classes.paper}
+              className={paper}
               backgroundColor='#84CAEE'
               label="Facebook"
               icon={<i className="fab fa-facebook-square"></i>}
             />
           </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paperPaper}>
+          <Grid item xs={12} className={gridPaper}>
+            <Paper className={paperPaper}>
               <TextField
-                    className={classes.paper}
+                    className={paper}
                     value={email}
                     onChange={(this.onChange)}
 
                 />
               <RaisedButton
-                className={classes.paper}
+                className={paper}
                 backgroundColor='#84CAEE'
                 label="Facebook"
                 icon={<i className="fab fa-facebook-square"></i>}
