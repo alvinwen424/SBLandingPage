@@ -7,7 +7,9 @@ import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
-import Signup from './GridSignup'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/Flatbutton'
+import Home from './Home'
 
 const styles = theme => ({
   root: {
@@ -42,29 +44,60 @@ const styles = theme => ({
   }
 });
 
-class PreLanding extends Component {
+class GridSignup extends Component {
   constructor(props){
     super(props)
     this.state = {
-      email:"Enter email here",
-      redirectToLanding: false
+      month:1,
+      day:1,
+      year:1,
+      gender:1,
+      firstName:"First Name",
+      lastName:"Last Name",
+      email:"Email",
+      confirmEmail:"Confirm email",
+      submitted: false
     }
   }
 
-  onChange = (e) => {
-    this.setState({email: e.target.value})
+  componentDidMount() {
+    this.setState({email: this.props.location.state.email})
   }
 
-  onSubmit = () => {
-    this.setState({redirectToLanding: true})
+    onSubmit = () => {
+    const {firstName, lastName, email, confirmEmail} = this.state
+    upload({
+      firstName,
+      lastName,
+      email,
+      confirmEmail
+    })
+    this.setState({submitted: true})
+  }
+
+  onChange = (type, e, index, value) => {
+    e.preventDefault()
+    if(type == 'firstName' || type == 'lastName' || type == 'email' || type == 'confirmEmail'){
+      this.setState({[type]: e.target.value})
+    }else{
+      this.setState({[type]: value})
+    }
+  }
+
+  handleClose = () => {
+    this.setState({submitted: false})
   }
 
   render(){
+    const {firstName, lastName, email, confirmEmail, month, day, year, gender, submitted} = this.state
     let { textField, buttonText, paper, paperPaper, root, gridPaper} = this.props.classes
-    let { email, redirectToLanding } = this.state
-    if(redirectToLanding){
-      return <Redirect to={{pathname:"./signup", state:{email} } }/>
-    }
+    const actions = [
+      <FlatButton
+        label="Done"
+        primary={true}
+        onClick={this.handleClose}
+      />,
+    ]
     return(
       <div className={`${root} prelanding_grid`}>
         <Grid container spacing={24} >
@@ -81,18 +114,26 @@ class PreLanding extends Component {
 
                 /> <br/>
               <Button onClick={this.onSubmit} className={buttonText}>
-                {<span >Get Early Access</span>}
+                {<span >Submit</span>}
               </Button>
             </Paper>
           </Grid>
         </Grid>
+        <Dialog
+            title='Thank you for signing up!'
+            open={submitted}
+            actions={actions}
+            onRequestClose={this.handleClose}
+          >
+            Thank you {firstName} for registering for our community pool, you will be one of the first people to recieve an invitation to our beta! See you soon!
+        </Dialog>
       </div>
     )
   }
 }
 
-PreLanding.propTypes = {
+GridSignup.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PreLanding);
+export default withStyles(styles)(GridSignup);
