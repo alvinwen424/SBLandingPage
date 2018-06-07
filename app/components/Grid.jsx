@@ -6,6 +6,7 @@ import PropTypes from "prop-types"
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
 import Home from './Home'
 
 const styles = theme => ({
@@ -79,11 +80,9 @@ class PreLanding extends Component {
                     onChange={(this.onChange)}
 
                 /> <br/>
-              <RaisedButton
-                // className={paper}
-                label={<span className={buttonText}>Get Early Access</span>}
-                onClick={this.onSubmit}
-              />
+              <Button onClick={this.onSubmit} className={buttonText}>
+                {<span >Get Early Access</span>}
+              </Button>
             </Paper>
           </Grid>
         </Grid>
