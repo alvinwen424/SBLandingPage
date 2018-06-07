@@ -14,7 +14,10 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader'
+        use: [
+          {loader: 'babel-loader'},
+          // {loader: 'url-loader?limit=100000', },
+        ]
       }
     ]
   }

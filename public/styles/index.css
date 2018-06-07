@@ -19,6 +19,12 @@ body {
   background-size: cover;
 }
 
+.prelanding_grid {
+  background-image: url('/SB_Stock_Landing_Page.jpg');
+  background-size: cover;
+  height: 100%;
+}
+
 .prelandingPage .prelandingPage-Story, .prelandingPage p  {
   color: white;
 }

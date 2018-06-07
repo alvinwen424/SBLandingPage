@@ -10,12 +10,13 @@ import Home from './Home'
 
 const styles = theme => ({
   root: {
+    // background: `url(${Image})`,
     flexGrow: 1,
   },
   paperPaper: {
     flex:'1',
     textAlign: 'center',
-    width: '500px',
+    maxWidth: '50%',
   },
   gridPaper: {
     display: 'flex'
@@ -49,14 +50,13 @@ class PreLanding extends Component {
       return <Redirect to={{pathname:"./Home", state:{email} } }/>
     }
     return(
-      <div className={root}>
+      <div className={`${root} prelanding_grid`}>
         <Grid container spacing={24} >
           <Grid item xs={12} className={gridPaper}>
             <Paper className={paperPaper}>
               <img className={paper} src='SBTransparent.png' width="50%" height="50%"/>
               <h1 className={paper}>StoryBox</h1>
               <p className={paper}>Enter your email to join the waitlist</p>
-              <p>or</p>
               <TextField
                     className={paper}
                     value={email}
