@@ -11,7 +11,6 @@ render(
     <Router>
       <div>
         <MuiThemeProvider>
-          <Navbar />
           <Routes />
         </MuiThemeProvider>
       </div>

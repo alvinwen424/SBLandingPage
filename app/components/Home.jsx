@@ -10,6 +10,8 @@ import FlatButton from 'material-ui/Flatbutton'
 import { withStyles } from '@material-ui/core/styles'
 import sa from 'superagent'
 
+import Navbar from './Navbar'
+
 const styles = theme => {
 
 }
@@ -88,66 +90,69 @@ class Home extends Component {
       />,
     ];
     return (
-      <div className="signup-form">
-        <img className='logo' src="Storybox_3.jpg" />
-        <h1>So... What's your story?</h1>
-        <p>Create, organize and store your story for the future.</p>
-        <div className="form">
-          <TextField
-            className='form-textbox'
-            value={firstName}
-            onChange={((e)=> this.onChange('firstName', e))}
+      <div>
+        <Navbar />
+        <div className="signup-form">
+          <img className='logo' src="Storybox_3.jpg" />
+          <h1>So... What's your story?</h1>
+          <p>Create, organize and store your story for the future.</p>
+          <div className="form">
+            <TextField
+              className='form-textbox'
+              value={firstName}
+              onChange={((e)=> this.onChange('firstName', e))}
+            />
+            <TextField
+              className='form-textbox'
+              value={lastName}
+              onChange={((e)=> this.onChange('lastName', e))}
+            /><br />
+            <TextField
+              className='form-textbox'
+              value={email}
+              onChange={((e)=> this.onChange('email', e))}
+            />
+            <TextField
+              className='form-textbox'
+              value={confirmEmail}
+              onChange={((e)=> this.onChange('confirmEmail', e))}
+            /><br />
+            <DropDownMenu className='dropDown' value={gender} onChange={((e, index, value)=> this.onChange('gender', e, index, value))}>
+              {genders.map((eachGender, index) => {
+                return <MenuItem key={eachGender + index} value={index + 1} primaryText={eachGender} />
+              })}
+            </DropDownMenu>
+            <DropDownMenu className='dropDown' value={month} onChange={((e, index, value)=> this.onChange('month', e, index, value))}>
+              {months.map((eachMonth, index) => {
+                return <MenuItem key={eachMonth + index} value={index + 1} primaryText={eachMonth} />
+              })}
+            </DropDownMenu>
+            <DropDownMenu className='dropDown' value={day} onChange={((e, index, value)=> this.onChange('day', e, index, value))}>
+              {days.map((eachDay, index) => {
+                return <MenuItem key={eachDay + index} value={index + 1} primaryText={eachDay} />
+              })}
+            </DropDownMenu>
+            <DropDownMenu className='dropDown' value={year} onChange={((e, index, value)=> this.onChange('year', e, index, value))}>
+              {years.map((eachYear, index) => {
+                return <MenuItem key={eachYear + index} value={index + 1} primaryText={eachYear} />
+              })}
+            </DropDownMenu>
+          </div>
+          <RaisedButton
+            className='submitButton'
+            label='submit'
+            onClick={this.onSubmit}
+            backgroundColor='#84CAEE'
           />
-          <TextField
-            className='form-textbox'
-            value={lastName}
-            onChange={((e)=> this.onChange('lastName', e))}
-          /><br />
-          <TextField
-            className='form-textbox'
-            value={email}
-            onChange={((e)=> this.onChange('email', e))}
-          />
-          <TextField
-            className='form-textbox'
-            value={confirmEmail}
-            onChange={((e)=> this.onChange('confirmEmail', e))}
-          /><br />
-          <DropDownMenu className='dropDown' value={gender} onChange={((e, index, value)=> this.onChange('gender', e, index, value))}>
-            {genders.map((eachGender, index) => {
-              return <MenuItem key={eachGender + index} value={index + 1} primaryText={eachGender} />
-            })}
-          </DropDownMenu>
-          <DropDownMenu className='dropDown' value={month} onChange={((e, index, value)=> this.onChange('month', e, index, value))}>
-            {months.map((eachMonth, index) => {
-              return <MenuItem key={eachMonth + index} value={index + 1} primaryText={eachMonth} />
-            })}
-          </DropDownMenu>
-          <DropDownMenu className='dropDown' value={day} onChange={((e, index, value)=> this.onChange('day', e, index, value))}>
-            {days.map((eachDay, index) => {
-              return <MenuItem key={eachDay + index} value={index + 1} primaryText={eachDay} />
-            })}
-          </DropDownMenu>
-          <DropDownMenu className='dropDown' value={year} onChange={((e, index, value)=> this.onChange('year', e, index, value))}>
-            {years.map((eachYear, index) => {
-              return <MenuItem key={eachYear + index} value={index + 1} primaryText={eachYear} />
-            })}
-          </DropDownMenu>
+          <Dialog
+            title='Thank you for signing up!'
+            open={submitted}
+            actions={actions}
+            onRequestClose={this.handleClose}
+          >
+            Thank you {firstName} for registering for our community pool, you will be one of the first people to recieve an invitation to our beta! See you soon!
+          </Dialog>
         </div>
-        <RaisedButton
-          className='submitButton'
-          label='submit'
-          onClick={this.onSubmit}
-          backgroundColor='#84CAEE'
-        />
-        <Dialog
-          title='Thank you for signing up!'
-          open={submitted}
-          actions={actions}
-          onRequestClose={this.handleClose}
-        >
-          Thank you {firstName} for registering for our community pool, you will be one of the first people to recieve an invitation to our beta! See you soon!
-        </Dialog>
       </div>
     )
   }

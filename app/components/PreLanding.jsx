@@ -30,7 +30,7 @@ class PreLanding extends Component {
     }
     return(
       <div className='prelandingPage'>
-        <img src='SBTransparent.png' width="50%" height="50%"/>
+        <img src='SBTransparent.png' width="25%" height="25%"/>
         <h1 className="prelandingPage-Story">StoryBox</h1>
         <p>Enter your email to join the waitlist</p>
         <div id='emailSubmit'>

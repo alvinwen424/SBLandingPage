@@ -8,8 +8,18 @@
 }
 
 body {
+  height: 100%;
   font-family: 'ubuntu_condensedregular' !important;
+  background-image: url('/SB_Stock_Landing_Page.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed ;
+  background-repeat: no-repeat;
 }
+
+/* .buttonText {
+  font-family: 'ubuntu_condensedregular' !important;
+} */
 
 .prelandingPage {
   display:flex;
@@ -20,9 +30,11 @@ body {
 }
 
 .prelanding_grid {
-  background-image: url('/SB_Stock_Landing_Page.jpg');
-  background-size: cover;
-  height: 100%;
+  min-height: 100%;
+}
+
+.prelanding_grid p, .prelanding_grid h1 {
+  color: white;
 }
 
 .prelandingPage .prelandingPage-Story, .prelandingPage p  {
