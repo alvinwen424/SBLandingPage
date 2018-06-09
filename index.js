@@ -45,11 +45,12 @@ const upload = multer({
 
 app.post('/upload', (req, res) => {
   // req.file is the 'userdata' file
-  console.log('backend', req.body)
+  console.log('backend')
+  const Key = 'user_' + req.body.email
   s3.putObject({
       Bucket: 'sd-landing-page',
-      Key: 'user',
-      Body: req.file,
+      Key, //this needs to change based on req input or else it will overwrite existing users
+      Body: JSON.stringify(req.body),
       ACL: 'public-read', // your permisions
     }, (err) => {
       if (err) return res.status(400).send(err);

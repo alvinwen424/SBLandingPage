@@ -54,6 +54,9 @@ const styles = theme => ({
   },
   textField: {
     color: 'white',
+  },
+  dropDown: {
+    background: 'white',
   }
 });
 
@@ -103,7 +106,7 @@ class GridSignup extends Component {
 
   render(){
     const {firstName, lastName, email, confirmEmail, month, day, year, gender, submitted} = this.state
-    let { textField, buttonText, paper, paperPaper, root, gridPaper} = this.props.classes
+    let { textField, buttonText, paper, paperPaper, root, gridPaper, dropDown} = this.props.classes
     const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const genders = ['Male','Female']
     const days = []
@@ -149,26 +152,26 @@ class GridSignup extends Component {
                 value={confirmEmail}
                 onChange={((e)=> this.onChange('confirmEmail', e))}
               /><br />
-              <DropDownMenu className='dropDown' value={gender} onChange={((e, index, value)=> this.onChange('gender', e, index, value))}>
+              {/* <DropDownMenu style={dropDown} menuItemStyle={{dropDown}} value={gender} onChange={((e, index, value)=> this.onChange('gender', e, index, value))}>
                 {genders.map((eachGender, index) => {
-                  return <MenuItem key={eachGender + index} value={index + 1} primaryText={eachGender} />
+                  return <MenuItem key={eachGender + index} value={index + 1} primaryText={eachGender}/>
                 })}
               </DropDownMenu>
-              <DropDownMenu className='dropDown' value={month} onChange={((e, index, value)=> this.onChange('month', e, index, value))}>
+              <DropDownMenu value={month} onChange={((e, index, value)=> this.onChange('month', e, index, value))}>
                 {months.map((eachMonth, index) => {
                   return <MenuItem key={eachMonth + index} value={index + 1} primaryText={eachMonth} />
                 })}
               </DropDownMenu>
-              <DropDownMenu className='dropDown' value={day} onChange={((e, index, value)=> this.onChange('day', e, index, value))}>
+              <DropDownMenu value={day} onChange={((e, index, value)=> this.onChange('day', e, index, value))}>
                 {days.map((eachDay, index) => {
                   return <MenuItem key={eachDay + index} value={index + 1} primaryText={eachDay} />
                 })}
               </DropDownMenu>
-              <DropDownMenu className='dropDown' value={year} onChange={((e, index, value)=> this.onChange('year', e, index, value))}>
+              <DropDownMenu value={year} onChange={((e, index, value)=> this.onChange('year', e, index, value))}>
                 {years.map((eachYear, index) => {
                   return <MenuItem key={eachYear + index} value={index + 1} primaryText={eachYear} />
                 })}
-            </DropDownMenu> <br/>
+            </DropDownMenu> <br/> */}
               <Button onClick={this.onSubmit} className={buttonText}>
                 {<span >Submit</span>}
               </Button>
