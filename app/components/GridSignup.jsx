@@ -9,7 +9,20 @@ import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/Flatbutton'
+import DropDownMenu from 'material-ui/DropDownMenu'
+import MenuItem from 'material-ui/MenuItem'
 import Home from './Home'
+import sa from 'superagent'
+
+const upload = (file) => {
+  console.log(file)
+  sa.post('/upload')
+  .send(file)
+  .end((err, res) => {
+    if (err) console.log(err);
+    console.log('response', res)
+  })
+}
 
 const styles = theme => ({
   root: {
@@ -91,6 +104,16 @@ class GridSignup extends Component {
   render(){
     const {firstName, lastName, email, confirmEmail, month, day, year, gender, submitted} = this.state
     let { textField, buttonText, paper, paperPaper, root, gridPaper} = this.props.classes
+    const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    const genders = ['Male','Female']
+    const days = []
+    const years = []
+    for(var i = 1; i <= 31; i++){
+      days.push(i)
+    }
+    for(var i= 1960; i <=(new Date()).getFullYear(); i++){
+      years.push(i)
+    }
     const actions = [
       <FlatButton
         label="Done"
@@ -104,15 +127,48 @@ class GridSignup extends Component {
           <Grid item xs={12} className={gridPaper}>
             <Paper className={paperPaper}>
               <img className={paper} src='SBTransparent.png' width="50%" height="50%"/>
-              <h1 className={paper}>StoryBox</h1>
-              <p className={paper}>Enter your email to join our waitlist!</p>
+              <h1 className={paper}>So... What's your story?</h1>
+              <p>Create, organize and store your story for the future.</p>
+              <TextField
+                inputStyle={{color: 'white'}}
+                value={firstName}
+                onChange={((e)=> this.onChange('firstName', e))}
+              />
+              <TextField
+                inputStyle={{color: 'white'}}
+                value={lastName}
+                onChange={((e)=> this.onChange('lastName', e))}
+              /><br />
               <TextField
                     inputStyle={{color: 'white'}}
-                    // className={textField}
                     value={email}
-                    onChange={(this.onChange)}
-
+                    onChange={((e)=> this.onChange('email', e))}
                 /> <br/>
+              <TextField
+                inputStyle={{color: 'white'}}
+                value={confirmEmail}
+                onChange={((e)=> this.onChange('confirmEmail', e))}
+              /><br />
+              <DropDownMenu className='dropDown' value={gender} onChange={((e, index, value)=> this.onChange('gender', e, index, value))}>
+                {genders.map((eachGender, index) => {
+                  return <MenuItem key={eachGender + index} value={index + 1} primaryText={eachGender} />
+                })}
+              </DropDownMenu>
+              <DropDownMenu className='dropDown' value={month} onChange={((e, index, value)=> this.onChange('month', e, index, value))}>
+                {months.map((eachMonth, index) => {
+                  return <MenuItem key={eachMonth + index} value={index + 1} primaryText={eachMonth} />
+                })}
+              </DropDownMenu>
+              <DropDownMenu className='dropDown' value={day} onChange={((e, index, value)=> this.onChange('day', e, index, value))}>
+                {days.map((eachDay, index) => {
+                  return <MenuItem key={eachDay + index} value={index + 1} primaryText={eachDay} />
+                })}
+              </DropDownMenu>
+              <DropDownMenu className='dropDown' value={year} onChange={((e, index, value)=> this.onChange('year', e, index, value))}>
+                {years.map((eachYear, index) => {
+                  return <MenuItem key={eachYear + index} value={index + 1} primaryText={eachYear} />
+                })}
+            </DropDownMenu> <br/>
               <Button onClick={this.onSubmit} className={buttonText}>
                 {<span >Submit</span>}
               </Button>
