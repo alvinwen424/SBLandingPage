@@ -72,7 +72,7 @@ class GridSignup extends Component {
       lastName:"Last Name",
       email:"Email",
       confirmEmail:"Confirm email",
-      submitted: false
+      submitted: false,
     }
   }
 
@@ -124,6 +124,8 @@ class GridSignup extends Component {
         onClick={this.handleClose}
       />,
     ]
+    let disabled = (email !== confirmEmail) ? true : false
+
     return(
       <div className={`${root} prelanding_grid`}>
         <Grid container spacing={24} >
@@ -136,7 +138,7 @@ class GridSignup extends Component {
                 inputStyle={{color: 'white'}}
                 value={firstName}
                 onChange={((e)=> this.onChange('firstName', e))}
-              />
+              /><br/>
               <TextField
                 inputStyle={{color: 'white'}}
                 value={lastName}
@@ -172,7 +174,7 @@ class GridSignup extends Component {
                   return <MenuItem key={eachYear + index} value={index + 1} primaryText={eachYear} />
                 })}
             </DropDownMenu> <br/> */}
-              <Button onClick={this.onSubmit} className={buttonText}>
+              <Button onClick={this.onSubmit} disabled={disabled} className={buttonText}>
                 {<span >Submit</span>}
               </Button>
             </Paper>
