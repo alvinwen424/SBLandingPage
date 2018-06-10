@@ -70,8 +70,9 @@ class PreLanding extends Component {
           <Grid item xs={12} className={gridPaper}>
             <Paper className={paperPaper}>
               <img className={paper} src='SBTransparent.png' width="50%" height="50%"/>
-              <h1 className={paper}>StoryBox</h1>
-              <p className={paper}>Enter your email to join our waitlist!</p>
+              <h1 className={paper}>Storybox</h1>
+              <p className={paper}>Fun & easy way to save your </p>
+              <p className={paper}>memories for your loved ones in the future</p>
               <TextField
                     inputStyle={{color: 'white'}}
                     // className={textField}
