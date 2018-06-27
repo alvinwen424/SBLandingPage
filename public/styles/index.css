@@ -10,7 +10,9 @@
 /* mobile design */
 @media only screen and (max-width: 600px) {
   body {
-    font-family: 'ubuntu_condensedregular' !important;
+    font-family: museo-sans, sans-serif !important;
+    font-style: normal;
+    font-weight: 100;
     background-image: url('/SB_Stock_Landing_Page.jpg');
     background-size: cover;
     background-position: center;

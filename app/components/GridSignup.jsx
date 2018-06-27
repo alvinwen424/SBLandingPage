@@ -28,6 +28,9 @@ const styles = theme => ({
   root: {
     // background: `url(${Image})`,
     flexGrow: 1,
+    fontFamily: 'museo-sans, sans-serif',
+    fontStyle: 'normal',
+    fontWeight: '100',
   },
   paperPaper: {
     flex:'1',
@@ -137,7 +140,7 @@ class GridSignup extends Component {
         <Grid container spacing={24} >
           <Grid item xs={12} className={gridPaper}>
             <Paper className={paperPaper}>
-              <img className={paper} src='SBTransparent.png' width="50%" height="50%"/>
+              <img className={paper} src='SBTransparent.png' width="295px" height="288px"/>
               <h1 className={paper}>So... What's your story?</h1>
               <p>Create, organize and store your story for the future.</p>
               <TextField
@@ -192,7 +195,7 @@ class GridSignup extends Component {
                 })}
             </DropDownMenu> <br/> */}
               <Button onClick={this.onSubmit} disabled={disabled} className={buttonText}>
-                {<span >Submit</span>}
+                {<span >Join Our Waitlist</span>}
               </Button>
             </Paper>
           </Grid>

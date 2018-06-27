@@ -12,6 +12,9 @@ const styles = theme => ({
   root: {
     // background: `url(${Image})`,
     flexGrow: 1,
+    fontFamily: 'museo-sans, sans-serif',
+    fontStyle: 'normal',
+    fontWeight: '100',
   },
   paperPaper: {
     flex:'1',
@@ -23,6 +26,9 @@ const styles = theme => ({
     //responsive phone css 0px to sm(600px)
     [theme.breakpoints.down('sm')]: {
       minWidth: '100%',
+      fontFamily: 'museo-sans, sans-serif',
+      fontStyle: 'normal',
+      fontWeight: '100',
     }
   },
   gridPaper: {
@@ -75,10 +81,10 @@ class PreLanding extends Component {
         <Grid container spacing={24} >
           <Grid item xs={12} className={gridPaper}>
             <Paper className={paperPaper}>
-              <img className={paper} src='SBTransparent.png' width="50%" height="50%"/>
+              <img className={paper} src='SBTransparent.png' width="295px" height="288px"/>
               <h1 className={paper}>Storybox</h1>
-              <p className={paper}>Fun & easy way to save your </p>
-              <p className={paper}>memories for your loved ones in the future</p>
+              <p className={paper}>Fun & easy way to save your memories</p>
+              <p className={paper}>to your family and friends in the future</p>
               <TextField
                     inputStyle={{color: 'white'}}
                     // className={textField}
