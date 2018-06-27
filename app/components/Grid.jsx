@@ -61,7 +61,9 @@ class PreLanding extends Component {
   onSubmit = () => {
     this.setState({redirectToLanding: true})
   }
-
+  onClick = () => {
+    this.setState({email: ""})
+  }
   render(){
     let { textField, buttonText, paper, paperPaper, root, gridPaper} = this.props.classes
     let { email, redirectToLanding } = this.state
@@ -80,9 +82,12 @@ class PreLanding extends Component {
               <TextField
                     inputStyle={{color: 'white'}}
                     // className={textField}
+                    hintText="Hint Text"
+                    floatingLabelText="First Name"
+                    floatingLabelFixed={true}
                     value={email}
                     onChange={(this.onChange)}
-
+                    onClick={this.onClick}
                 /> <br/>
               <Button onClick={this.onSubmit} className={buttonText}>
                 {<span >Get Early Access</span>}
