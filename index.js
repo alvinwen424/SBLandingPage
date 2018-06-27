@@ -78,6 +78,7 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500).send(err.message || "Internal server error")
 })
 
-app.listen('1337', () => {
+let port_number = process.env.PORT || 1337
+app.listen(port_number, () => {
   console.log('Now listening on port 1337')
 })
