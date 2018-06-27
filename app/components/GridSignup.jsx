@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
+import withWidth from '@material-ui/core/withWidth';
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/Flatbutton'
 import DropDownMenu from 'material-ui/DropDownMenu'
@@ -64,6 +65,15 @@ const styles = theme => ({
   },
   dropDown: {
     background: 'white',
+  },
+  phone: {
+    flex:'1',
+    textAlign: 'center',
+    maxWidth: '50%',
+    margin: '20px',
+    padding: '5px',
+    backgroundColor: 'transparent',
+    minWidth: '100%',
   }
 });
 
@@ -115,7 +125,7 @@ class GridSignup extends Component {
   }
   render(){
     const {firstName, lastName, email, confirmEmail, month, day, year, gender, submitted} = this.state
-    let { textField, buttonText, paper, paperPaper, root, gridPaper, dropDown} = this.props.classes
+    let { textField, buttonText, paper, paperPaper, root, gridPaper, dropDown, phone} = this.props.classes
     const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     const genders = ['Male','Female']
     const days = []
@@ -134,12 +144,12 @@ class GridSignup extends Component {
       />,
     ]
     let disabled = (email !== confirmEmail) ? true : false
-
+    const phoneSize = (this.props.width == 'sm') ? phone : paperPaper
     return(
       <div className={`${root} prelanding_grid`}>
         <Grid container spacing={24} >
           <Grid item xs={12} className={gridPaper}>
-            <Paper className={paperPaper}>
+            <Paper className={phoneSize}>
               <img className={paper} src='SBTransparent.png' width="295px" height="288px"/>
               <h1 className={paper}>So... What's your story?</h1>
               <p>Create, organize and store your story for the future.</p>
@@ -214,7 +224,9 @@ class GridSignup extends Component {
 }
 
 GridSignup.propTypes = {
+  width: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(GridSignup);
+const signup = withStyles(styles)(GridSignup)
+export default withWidth()(signup);

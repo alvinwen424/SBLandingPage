@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
+import withWidth from '@material-ui/core/withWidth'
 
 const styles = theme => ({
   root: {
@@ -48,6 +49,16 @@ const styles = theme => ({
   },
   textField: {
     color: 'white',
+  },
+  //phone style is used when withWidth's response is 'sm'
+  phone: {
+    flex:'1',
+    textAlign: 'center',
+    maxWidth: '50%',
+    margin: '20px',
+    padding: '5px',
+    backgroundColor: 'transparent',
+    minWidth: '100%',
   }
 });
 
@@ -71,8 +82,9 @@ class PreLanding extends Component {
     this.setState({email: ""})
   }
   render(){
-    let { textField, buttonText, paper, paperPaper, root, gridPaper} = this.props.classes
+    let { textField, buttonText, paper, paperPaper, root, gridPaper, phone} = this.props.classes
     let { email, redirectToLanding } = this.state
+    const phoneSize = (this.props.width == 'sm') ? phone : paperPaper
     if(redirectToLanding){
       return <Redirect to={{pathname:"./signup", state:{email} } }/>
     }
@@ -80,7 +92,7 @@ class PreLanding extends Component {
       <div className={`${root} prelanding_grid`}>
         <Grid container spacing={24} >
           <Grid item xs={12} className={gridPaper}>
-            <Paper className={paperPaper}>
+            <Paper className={phoneSize}>
               <img className={paper} src='SBTransparent.png' width="295px" height="288px"/>
               <h1 className={paper}>Storybox</h1>
               <p className={paper}>Fun & easy way to save your memories</p>
@@ -107,7 +119,9 @@ class PreLanding extends Component {
 }
 
 PreLanding.propTypes = {
+  width: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PreLanding);
+const landing = withStyles(styles)(PreLanding)
+export default withWidth()(landing);

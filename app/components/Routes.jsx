@@ -11,6 +11,7 @@ export default class Routes extends Component {
     return(
       <div>
         <Switch>
+          <Route path='/prelanding' component={PreLanding} />
           <Route path='/signup' component={GridSignup} />
           <Route path='/Home' component={Home} />
           <Route path='/' component={Grid} />
