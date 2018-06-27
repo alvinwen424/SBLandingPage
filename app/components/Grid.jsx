@@ -83,7 +83,7 @@ class PreLanding extends Component {
                     inputStyle={{color: 'white'}}
                     // className={textField}
                     hintText="Hint Text"
-                    floatingLabelText="First Name"
+                    floatingLabelText="Email"
                     floatingLabelFixed={true}
                     value={email}
                     onChange={(this.onChange)}

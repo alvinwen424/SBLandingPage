@@ -107,7 +107,9 @@ class GridSignup extends Component {
   handleClose = () => {
     this.setState({submitted: false})
   }
-
+  onClick = (type) => {
+    this.setState({[type]: ""})
+  }
   render(){
     const {firstName, lastName, email, confirmEmail, month, day, year, gender, submitted} = this.state
     let { textField, buttonText, paper, paperPaper, root, gridPaper, dropDown} = this.props.classes
@@ -142,21 +144,32 @@ class GridSignup extends Component {
                 inputStyle={{color: 'white'}}
                 value={firstName}
                 onChange={((e)=> this.onChange('firstName', e))}
+                onClick={(()=> this.onClick('firstName'))}
+                floatingLabelText="First Name"
+                floatingLabelFixed={true}
               /><br/>
               <TextField
                 inputStyle={{color: 'white'}}
                 value={lastName}
                 onChange={((e)=> this.onChange('lastName', e))}
+                onClick={(()=> this.onClick('lastName'))}
+                floatingLabelText="Last Name"
+                floatingLabelFixed={true}
               /><br />
               <TextField
                     inputStyle={{color: 'white'}}
                     value={email}
                     onChange={((e)=> this.onChange('email', e))}
+                    floatingLabelText="Email"
+                    floatingLabelFixed={true}
                 /> <br/>
               <TextField
                 inputStyle={{color: 'white'}}
                 value={confirmEmail}
                 onChange={((e)=> this.onChange('confirmEmail', e))}
+                onClick={(()=> this.onClick('confirmEmail'))}
+                floatingLabelText="Confirm Email"
+                floatingLabelFixed={true}
               /><br />
               {/* <DropDownMenu style={dropDown} menuItemStyle={{dropDown}} value={gender} onChange={((e, index, value)=> this.onChange('gender', e, index, value))}>
                 {genders.map((eachGender, index) => {
