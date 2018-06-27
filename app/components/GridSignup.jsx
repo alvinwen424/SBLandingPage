@@ -36,6 +36,10 @@ const styles = theme => ({
     margin: '20px',
     padding: '5px',
     backgroundColor: 'transparent',
+    //responsive phone css 0px to sm(600px)
+    [theme.breakpoints.down('sm')]: {
+      minWidth: '100%',
+    }
   },
   gridPaper: {
     display: 'flex'
