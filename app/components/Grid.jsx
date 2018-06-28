@@ -59,7 +59,7 @@ const styles = theme => ({
     padding: '5px',
     backgroundColor: 'transparent',
     minWidth: '100%',
-  }
+  },
 });
 
 class PreLanding extends Component {
@@ -92,7 +92,7 @@ class PreLanding extends Component {
       <div className={`${root} prelanding_grid`}>
         <Grid container spacing={24} >
           <Grid item xs={12} className={gridPaper}>
-            <Paper className={phoneSize}>
+            <Paper className={`${phoneSize} prelanding_paper`}>
               <img className={paper} src='SBTransparent.png' width="295px" height="288px"/>
               <h1 className={paper}>Storybox</h1>
               <p className={paper}>Fun & easy way to save your memories</p>
@@ -106,8 +106,9 @@ class PreLanding extends Component {
                     value={email}
                     onChange={(this.onChange)}
                     onClick={this.onClick}
+                    className='fontSize'
                 /> <br/>
-              <Button onClick={this.onSubmit} className={buttonText}>
+              <Button onClick={this.onSubmit} className={`${buttonText} fontSize`}>
                 {<span >Get Early Access</span>}
               </Button>
             </Paper>

@@ -74,7 +74,7 @@ const styles = theme => ({
     padding: '5px',
     backgroundColor: 'transparent',
     minWidth: '100%',
-  }
+  },
 });
 
 class GridSignup extends Component {
@@ -148,14 +148,15 @@ class GridSignup extends Component {
     return(
       <div className={`${root} prelanding_grid`}>
         <Grid container spacing={24} >
-          <Grid item xs={12} className={gridPaper}>
-            <Paper className={phoneSize}>
+          <Grid item xs={12} className={`${gridPaper} prelanding_paper`}>
+            <Paper className={`${phoneSize} prelanding_paper`}>
               <img className={paper} src='SBTransparent.png' width="295px" height="288px"/>
               <h1 className={paper}>So... What's your story?</h1>
               <p>Create, organize and store your story for the future.</p>
               <TextField
                 inputStyle={{color: 'white'}}
                 value={firstName}
+                className='fontSize'
                 onChange={((e)=> this.onChange('firstName', e))}
                 onClick={(()=> this.onClick('firstName'))}
                 floatingLabelText="First Name"
@@ -168,6 +169,7 @@ class GridSignup extends Component {
                 onClick={(()=> this.onClick('lastName'))}
                 floatingLabelText="Last Name"
                 floatingLabelFixed={true}
+                className='fontSize'
               /><br />
               <TextField
                     inputStyle={{color: 'white'}}
@@ -175,6 +177,7 @@ class GridSignup extends Component {
                     onChange={((e)=> this.onChange('email', e))}
                     floatingLabelText="Email"
                     floatingLabelFixed={true}
+                    className='fontSize'
                 /> <br/>
               <TextField
                 inputStyle={{color: 'white'}}
@@ -183,6 +186,7 @@ class GridSignup extends Component {
                 onClick={(()=> this.onClick('confirmEmail'))}
                 floatingLabelText="Confirm Email"
                 floatingLabelFixed={true}
+                className='fontSize'
               /><br />
               {/* <DropDownMenu style={dropDown} menuItemStyle={{dropDown}} value={gender} onChange={((e, index, value)=> this.onChange('gender', e, index, value))}>
                 {genders.map((eachGender, index) => {
@@ -204,7 +208,7 @@ class GridSignup extends Component {
                   return <MenuItem key={eachYear + index} value={index + 1} primaryText={eachYear} />
                 })}
             </DropDownMenu> <br/> */}
-              <Button onClick={this.onSubmit} disabled={disabled} className={buttonText}>
+              <Button onClick={this.onSubmit} disabled={disabled} className={`${buttonText} fontSize`}>
                 {<span >Join Our Waitlist</span>}
               </Button>
             </Paper>

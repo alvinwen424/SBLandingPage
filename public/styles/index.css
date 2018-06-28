@@ -8,16 +8,23 @@
 }
 
 /* mobile design */
-@media only screen{
-  body {
-    font-family: museo-sans, sans-serif !important;
-    font-style: normal;
-    font-weight: 100;
-    background-image: url('/SB_Stock_Landing_Page.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed ;
-    background-repeat: no-repeat;
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+  html{
+    height: 100vh;
+  }
+  .prelanding_paper {
+    flex: 1;
+    text-align: center;
+    max-width: 50%;
+    margin: 20px;
+    padding: 5px;
+    background-color: transparent;
+    min-width: 100%;
+    min-height: 100vh;
+    font-size: 2.5vh;
+  }
+  .fontSize {
+    font-size: 50% !important;
   }
 }
 
