@@ -224,6 +224,7 @@ var PreLanding = function (_Component) {
           root = _props$classes.root,
           gridPaper = _props$classes.gridPaper,
           phone = _props$classes.phone;
+          gridPaper = _props$classes.gridPaper;
       var _state = this.state,
           email = _state.email,
           redirectToLanding = _state.redirectToLanding;
@@ -244,6 +245,7 @@ var PreLanding = function (_Component) {
             _react2.default.createElement(
               _Paper2.default,
               { className: phoneSize },
+              { className: paperPaper },
               _react2.default.createElement('img', { className: paper, src: 'SBTransparent.png', width: '295px', height: '288px' }),
               _react2.default.createElement(
                 'h1',
@@ -298,6 +300,10 @@ PreLanding.propTypes = {
 
 var landing = (0, _styles.withStyles)(styles)(PreLanding);
 exports.default = (0, _withWidth2.default)()(landing);
+  classes: _propTypes2.default.object.isRequired
+};
+
+exports.default = (0, _styles.withStyles)(styles)(PreLanding);
 
 /***/ }),
 
@@ -531,6 +537,7 @@ var GridSignup = function (_Component) {
           gridPaper = _props$classes.gridPaper,
           dropDown = _props$classes.dropDown,
           phone = _props$classes.phone;
+          dropDown = _props$classes.dropDown;
 
       var months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
       var genders = ['Male', 'Female'];
@@ -549,6 +556,7 @@ var GridSignup = function (_Component) {
       })];
       var disabled = email !== confirmEmail ? true : false;
       var phoneSize = this.props.width == 'sm' ? phone : paperPaper;
+
       return _react2.default.createElement(
         'div',
         { className: root + ' prelanding_grid' },
@@ -561,6 +569,7 @@ var GridSignup = function (_Component) {
             _react2.default.createElement(
               _Paper2.default,
               { className: phoneSize },
+              { className: paperPaper },
               _react2.default.createElement('img', { className: paper, src: 'SBTransparent.png', width: '295px', height: '288px' }),
               _react2.default.createElement(
                 'h1',
@@ -660,6 +669,10 @@ GridSignup.propTypes = {
 
 var signup = (0, _styles.withStyles)(styles)(GridSignup);
 exports.default = (0, _withWidth2.default)()(signup);
+  classes: _propTypes2.default.object.isRequired
+};
+
+exports.default = (0, _styles.withStyles)(styles)(GridSignup);
 
 /***/ }),
 
@@ -1144,6 +1157,7 @@ var PreLanding = function (_Component) {
     value: function render() {
       console.log('width', this.props.width);
       var phoneSize = this.props.width == 'sm' ? this.props.classes.phone : this.props.classes.root;
+      console.log('props', this.props.classes);
       var _state = this.state,
           email = _state.email,
           redirectToLanding = _state.redirectToLanding;
@@ -1154,6 +1168,7 @@ var PreLanding = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: phoneSize },
+        { className: 'prelandingPage' },
         _react2.default.createElement('img', { src: 'SBTransparent.png', width: '25%', height: '25%' }),
         _react2.default.createElement(
           'h1',
@@ -1205,6 +1220,7 @@ PreLanding.propTypes = {
 
 var landing = (0, _styles.withStyles)(styles)(PreLanding);
 exports.default = (0, _withWidth2.default)()(landing);
+exports.default = PreLanding;
 
 /***/ }),
 
@@ -13780,7 +13796,7 @@ module.exports = camelizeStyleName;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  */
 
 var isTextNode = __webpack_require__(/*! ./isTextNode */ "./node_modules/fbjs/lib/isTextNode.js");
@@ -13828,7 +13844,7 @@ module.exports = containsNode;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  */
 
 function makeEmptyFunction(arg) {
@@ -14167,7 +14183,7 @@ module.exports = isTextNode;
  * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
- * 
+ *
  */
 
 /*eslint-disable no-self-compare */
@@ -16647,7 +16663,7 @@ __webpack_require__.r(__webpack_exports__);
     undefined;
 }(this, (function () {
     'use strict';
-    
+
     var REACT_STATICS = {
         childContextTypes: true,
         contextTypes: true,
@@ -16659,7 +16675,7 @@ __webpack_require__.r(__webpack_exports__);
         propTypes: true,
         type: true
     };
-    
+
     var KNOWN_STATICS = {
         name: true,
         length: true,
@@ -16669,30 +16685,30 @@ __webpack_require__.r(__webpack_exports__);
         arguments: true,
         arity: true
     };
-    
+
     var defineProperty = Object.defineProperty;
     var getOwnPropertyNames = Object.getOwnPropertyNames;
     var getOwnPropertySymbols = Object.getOwnPropertySymbols;
     var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
     var getPrototypeOf = Object.getPrototypeOf;
     var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
-    
+
     return function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
         if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-            
+
             if (objectPrototype) {
                 var inheritedComponent = getPrototypeOf(sourceComponent);
                 if (inheritedComponent && inheritedComponent !== objectPrototype) {
                     hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
                 }
             }
-            
+
             var keys = getOwnPropertyNames(sourceComponent);
-            
+
             if (getOwnPropertySymbols) {
                 keys = keys.concat(getOwnPropertySymbols(sourceComponent));
             }
-            
+
             for (var i = 0; i < keys.length; ++i) {
                 var key = keys[i];
                 if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
@@ -16702,10 +16718,10 @@ __webpack_require__.r(__webpack_exports__);
                     } catch (e) {}
                 }
             }
-            
+
             return targetComponent;
         }
-        
+
         return targetComponent;
     };
 })));
@@ -22028,7 +22044,7 @@ keyCode.isEventKey = function isEventKey(event, nameOrCode) {
       // check codes
       var foundNamedKey = codes[nameOrCode.toLowerCase()]
       if (foundNamedKey) { return foundNamedKey === keyCode; }
-    
+
       // check aliases
       var foundNamedKey = aliases[nameOrCode.toLowerCase()]
       if (foundNamedKey) { return foundNamedKey === keyCode; }
@@ -57502,7 +57518,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
   selectorFactory, which has the signature:
 
     (dispatch, options) => (nextState, nextOwnProps) => nextFinalProps
-  
+
   connect passes its args to connectAdvanced as options, which will in turn pass them to
   selectorFactory each time a Connect component instance is instantiated or hot reloaded.
 
@@ -57898,7 +57914,7 @@ function wrapMapToPropsConstant(getConstant) {
 // dependsOnOwnProps is used by createMapToPropsProxy to determine whether to pass props as args
 // to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine
 // whether mapToProps needs to be invoked when props have changed.
-// 
+//
 // A length of one signals that mapToProps does not depend on props from the parent component.
 // A length of zero is assumed to mean mapToProps is getting args via arguments or ...args and
 // therefore not reporting its length accurately..
@@ -57908,16 +57924,16 @@ function getDependsOnOwnProps(mapToProps) {
 
 // Used by whenMapStateToPropsIsFunction and whenMapDispatchToPropsIsFunction,
 // this function wraps mapToProps in a proxy function which does several things:
-// 
+//
 //  * Detects whether the mapToProps function being called depends on props, which
 //    is used by selectorFactory to decide if it should reinvoke on props changes.
-//    
+//
 //  * On first call, handles mapToProps if returns another function, and treats that
 //    new function as the true mapToProps for subsequent calls.
-//    
+//
 //  * On first call, verifies the first result is a plain object, in order to warn
 //    the developer that their mapToProps function is not returning a valid result.
-//    
+//
 function wrapMapToPropsFunc(mapToProps, methodName) {
   return function initProxySelector(dispatch, _ref) {
     var displayName = _ref.displayName;
