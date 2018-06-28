@@ -243,7 +243,7 @@ var PreLanding = function (_Component) {
             { item: true, xs: 12, className: gridPaper },
             _react2.default.createElement(
               _Paper2.default,
-              { className: phoneSize },
+              { className: phoneSize + ' prelanding_paper' },
               _react2.default.createElement('img', { className: paper, src: 'SBTransparent.png', width: '295px', height: '288px' }),
               _react2.default.createElement(
                 'h1',
@@ -268,13 +268,14 @@ var PreLanding = function (_Component) {
                 floatingLabelFixed: true,
                 value: email,
                 onChange: this.onChange,
-                onClick: this.onClick
+                onClick: this.onClick,
+                className: 'fontSize'
               }),
               ' ',
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 _Button2.default,
-                { onClick: this.onSubmit, className: buttonText },
+                { onClick: this.onSubmit, className: buttonText + ' fontSize' },
                 _react2.default.createElement(
                   'span',
                   null,
@@ -557,10 +558,10 @@ var GridSignup = function (_Component) {
           { container: true, spacing: 24 },
           _react2.default.createElement(
             _Grid2.default,
-            { item: true, xs: 12, className: gridPaper },
+            { item: true, xs: 12, className: gridPaper + ' prelanding_paper' },
             _react2.default.createElement(
               _Paper2.default,
-              { className: phoneSize },
+              { className: phoneSize + ' prelanding_paper' },
               _react2.default.createElement('img', { className: paper, src: 'SBTransparent.png', width: '295px', height: '288px' }),
               _react2.default.createElement(
                 'h1',
@@ -575,6 +576,7 @@ var GridSignup = function (_Component) {
               _react2.default.createElement(_TextField2.default, {
                 inputStyle: { color: 'white' },
                 value: firstName,
+                className: 'fontSize',
                 onChange: function onChange(e) {
                   return _this2.onChange('firstName', e);
                 },
@@ -595,7 +597,8 @@ var GridSignup = function (_Component) {
                   return _this2.onClick('lastName');
                 },
                 floatingLabelText: 'Last Name',
-                floatingLabelFixed: true
+                floatingLabelFixed: true,
+                className: 'fontSize'
               }),
               _react2.default.createElement('br', null),
               _react2.default.createElement(_TextField2.default, {
@@ -605,7 +608,8 @@ var GridSignup = function (_Component) {
                   return _this2.onChange('email', e);
                 },
                 floatingLabelText: 'Email',
-                floatingLabelFixed: true
+                floatingLabelFixed: true,
+                className: 'fontSize'
               }),
               ' ',
               _react2.default.createElement('br', null),
@@ -619,12 +623,13 @@ var GridSignup = function (_Component) {
                   return _this2.onClick('confirmEmail');
                 },
                 floatingLabelText: 'Confirm Email',
-                floatingLabelFixed: true
+                floatingLabelFixed: true,
+                className: 'fontSize'
               }),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 _Button2.default,
-                { onClick: this.onSubmit, disabled: disabled, className: buttonText },
+                { onClick: this.onSubmit, disabled: disabled, className: buttonText + ' fontSize' },
                 _react2.default.createElement(
                   'span',
                   null,

@@ -59,7 +59,7 @@ const styles = theme => ({
     padding: '5px',
     backgroundColor: 'transparent',
     minWidth: '100%',
-  }
+  },
 });
 
 class PreLanding extends Component {
@@ -106,8 +106,9 @@ class PreLanding extends Component {
                     value={email}
                     onChange={(this.onChange)}
                     onClick={this.onClick}
+                    className='fontSize'
                 /> <br/>
-              <Button onClick={this.onSubmit} className={buttonText}>
+              <Button onClick={this.onSubmit} className={`${buttonText} fontSize`}>
                 {<span >Get Early Access</span>}
               </Button>
             </Paper>
