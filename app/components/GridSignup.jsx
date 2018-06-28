@@ -148,7 +148,7 @@ class GridSignup extends Component {
     return(
       <div className={`${root} prelanding_grid`}>
         <Grid container spacing={24} >
-          <Grid item xs={12} className={gridPaper}>
+          <Grid item xs={12} className={`${gridPaper} prelanding_paper`}>
             <Paper className={phoneSize}>
               <img className={paper} src='SBTransparent.png' width="295px" height="288px"/>
               <h1 className={paper}>So... What's your story?</h1>
